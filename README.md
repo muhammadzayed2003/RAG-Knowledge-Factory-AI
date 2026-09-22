@@ -1,58 +1,450 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# RAG Knowledge Factory AI
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+A full-stack Retrieval-Augmented Generation platform built with Laravel, Gemini, and Qdrant.
 
-## About Laravel
+The system can ingest documents, images, large PDF books, and public website content, convert the extracted knowledge into semantic chunks, generate embeddings, store vectors in Qdrant, and answer questions using the retrieved knowledge.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## Features
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+* Universal knowledge ingestion
+* PDF ingestion
+* DOCX ingestion
+* TXT and Markdown ingestion
+* CSV, JSON, XML, and HTML ingestion
+* XLSX spreadsheet ingestion
+* PPTX presentation ingestion
+* JPG, JPEG, PNG, and WebP image ingestion
+* Large PDF and book processing
+* Gemini-powered image and scanned-document understanding
+* Automatic text extraction
+* Semantic text chunking
+* Batch embedding generation
+* Qdrant vector storage
+* Vector similarity retrieval
+* RAG-based question answering
+* Website crawling and ingestion
+* Same-domain page discovery
+* Sitemap discovery
+* Website content extraction
+* Website page chunking and embedding
+* Source-aware responses
+* Public browser chatbot
+* External REST API
+* Secure generated API keys
+* API key enable, disable, and delete controls
+* Dynamic public chatbot URL
+* Knowledge source deletion
+* Selective Qdrant vector deletion
+* 3D futuristic knowledge factory interface
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+## Technology Stack
 
-## Learning Laravel
+### Backend
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+* Laravel 13
+* PHP 8.4
+* Laravel HTTP Client
+* SQLite
 
-In addition, [Laracasts](https://laracasts.com) contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+### Artificial Intelligence
 
-You can also watch bite-sized lessons with real-world projects on [Laravel Learn](https://laravel.com/learn), where you will be guided through building a Laravel application from scratch while learning PHP fundamentals.
+* Gemini 3.1 Flash-Lite
+* Gemini Embedding API
+* Retrieval-Augmented Generation
+* Semantic Search
+* Multimodal file understanding
 
-## Agentic Development
+### Vector Database
 
-Laravel's predictable structure and conventions make it ideal for AI coding agents like Claude Code, Cursor, and GitHub Copilot. Install [Laravel Boost](https://laravel.com/docs/ai) to supercharge your AI workflow:
+* Qdrant
+* Cosine similarity
+* 768-dimensional embeddings
+* Docker-based local Qdrant instance
 
-```bash
-composer require laravel/boost --dev
+### Document Processing
 
-php artisan boost:install
+* Smalot PDF Parser
+* PHPWord
+* ZipArchive
+* DOMDocument
+* DOMXPath
+
+### Frontend
+
+* Blade
+* HTML
+* CSS
+* JavaScript
+* Custom 3D glassmorphism UI
+
+## System Architecture
+
+```text
+Knowledge Source
+      |
+      v
+Text / Knowledge Extraction
+      |
+      v
+Cleaning
+      |
+      v
+Semantic Chunking
+      |
+      v
+Gemini Embeddings
+      |
+      v
+Qdrant Vector Database
+      |
+      v
+Similarity Search
+      |
+      v
+Relevant Chunks
+      |
+      v
+Gemini
+      |
+      v
+Final Answer
 ```
 
-Boost provides your agent 15+ tools and skills that help agents build Laravel applications while following best practices.
+## Supported Knowledge Sources
 
-## Contributing
+### Documents
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+```text
+PDF
+DOCX
+TXT
+MD
+CSV
+JSON
+XML
+HTML
+HTM
+XLSX
+PPTX
+```
 
-## Code of Conduct
+### Images
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+```text
+JPG
+JPEG
+PNG
+WEBP
+```
 
-## Security Vulnerabilities
+Images are analyzed using Gemini so visible text and useful visual information can become searchable knowledge.
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+## Large Document Processing
 
-## License
+Large documents and books are divided into multiple semantic chunks before embedding.
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+Embeddings are generated in batches and stored incrementally inside Qdrant.
+
+Example:
+
+```text
+500 Page Book
+      |
+      v
+Extract Text
+      |
+      v
+Create Hundreds of Chunks
+      |
+      v
+Batch Embeddings
+      |
+      v
+Qdrant
+      |
+      v
+Ask Questions
+```
+
+The complete book does not need to be sent to the language model for every question.
+
+Only the most relevant chunks are retrieved.
+
+## Website Knowledge Factory
+
+The platform also supports website-based knowledge ingestion.
+
+A user can provide a public website URL and configure the maximum number of pages to crawl.
+
+Pipeline:
+
+```text
+Website URL
+      |
+      v
+Connect Website
+      |
+      v
+Discover Pages
+      |
+      v
+Extract Public Page Content
+      |
+      v
+Clean Text
+      |
+      v
+Create Chunks
+      |
+      v
+Generate Embeddings
+      |
+      v
+Store in Qdrant
+```
+
+The crawler supports:
+
+* Same-domain crawling
+* Sitemap discovery
+* Internal link discovery
+* HTML content extraction
+* Navigation and unnecessary page element removal
+* Page title preservation
+* Page URL preservation
+* Maximum page limits
+* Website-specific vector deletion
+
+Website vectors contain metadata such as:
+
+```text
+website_source_id
+source_type
+source_url
+website_host
+page_title
+chunk_index
+text
+```
+
+## Knowledge Ingestion Factory
+
+The frontend provides a visual AI ingestion pipeline.
+
+During file ingestion, the interface displays stages such as:
+
+```text
+Extract
+Chunk
+Embed
+Qdrant
+Ready
+```
+
+Website ingestion provides:
+
+```text
+Connect
+Discover
+Extract
+Chunk
+Embed
+Store
+```
+
+The interface contains a minimum visual processing sequence while the real Laravel ingestion engine runs in the backend.
+
+## Qdrant Storage
+
+All embeddings are stored inside the configured Qdrant collection.
+
+Document payload example:
+
+```json
+{
+    "document_id": 1,
+    "file_name": "example.pdf",
+    "file_type": "pdf",
+    "source_type": "document",
+    "chunk_index": 0,
+    "text": "Extracted knowledge..."
+}
+```
+
+Website payload example:
+
+```json
+{
+    "website_source_id": 1,
+    "source_type": "website",
+    "source_url": "https://example.com/about",
+    "website_host": "example.com",
+    "page_title": "About",
+    "chunk_index": 0,
+    "text": "Extracted website knowledge..."
+}
+```
+
+## RAG Chatbot
+
+When a user sends a question:
+
+```text
+Question
+    |
+    v
+Gemini Embedding
+    |
+    v
+Qdrant Search
+    |
+    v
+Top Relevant Chunks
+    |
+    v
+Gemini 3.1 Flash-Lite
+    |
+    v
+Answer
+```
+
+The assistant is configured to answer naturally without exposing internal RAG implementation details during normal conversation.
+
+## Public Chatbot
+
+The application provides a standalone browser chatbot.
+
+Local URL:
+
+```text
+http://127.0.0.1:8000/chatbot/public
+```
+
+When deployed, Laravel automatically generates the production URL using the application domain.
+
+The public chatbot uses the same knowledge base and RAG engine as the main dashboard.
+
+## External Chat API
+
+External applications can access the RAG assistant through:
+
+```text
+POST /api/external/chat
+```
+
+Example request:
+
+```json
+{
+    "question": "Ask something from the knowledge base"
+}
+```
+
+Required header:
+
+```text
+X-API-Key: YOUR_GENERATED_API_KEY
+```
+
+Example:
+
+```bash
+curl -X POST http://127.0.0.1:8000/api/external/chat \
+-H "Content-Type: application/json" \
+-H "X-API-Key: YOUR_GENERATED_API_KEY" \
+-d "{\"question\":\"Ask something\"}"
+```
+
+## API Key System
+
+The application supports generating external API keys.
+
+Keys use the following format:
+
+```text
+rag_live_xxxxxxxxxxxxxxxxxxxxxxxxx
+```
+
+Only the generated key is returned to the user.
+
+The application stores a SHA-256 hash instead of storing the full API key.
+
+Available controls:
+
+* Generate API key
+* Copy API key
+* Enable key
+* Disable key
+* Delete key
+* Track last use
+
+## Environment Configuration
+
+Add the required configuration to `.env`.
+
+```env
+GEMINI_API_KEY=YOUR_GEMINI_API_KEY
+GEMINI_CHAT_MODEL=gemini-3.1-flash-lite
+GEMINI_EMBEDDING_MODEL=gemini-embedding-001
+
+QDRANT_URL=http://127.0.0.1:6333
+QDRANT_COLLECTION=rag_documents
+```
+
+Never commit the real `.env` file or API keys to GitHub.
+
+## Installation
+
+Clone the project:
+
+```bash
+git clone https://github.com/muhammadzayed2003/RAG-Knowledge-Factory-AI.git
+```
+
+Enter the project:
+
+```bash
+cd RAG-Knowledge-Factory-AI
+```
+
+Install PHP dependencies:
+
+```bash
+composer install
+```
+
+Create environment configuration:
+
+```bash
+copy .env.example .env
+```
+
+Generate Laravel application key:
+
+```bash
+php artisan key:generate
+```
+
+Run migrations:
+
+```bash
+php artisan migrate
+```
+
+Clear configuration cache:
+
+```bash
+php artisan optimize:clear
+```
+
+## Start Qdrant
+
+Docker Desktop must be running.
+
+If the Qdrant container already exists:
+
+```bash
+docker start qdrant
+```
+
+Check runni
